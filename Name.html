@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Animated Name Display with CSS Effects">
+    <title>Animated Name</title>
+    <style>
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, #282c34 0%, #0f2027 100%);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .animated-name {
+            font-size: 80px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00c6ff, #0072ff, #ffafbd, #ffc3a0);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 10s ease infinite, wave 1.5s infinite linear;
+            display: inline-block;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes wave {
+            0%, 40%, 100% {
+                transform: translateY(0);
+            }
+            20% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .animated-name::before {
+            content: attr(data-shadow);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            color: rgba(0, 0, 0, 0.1);
+            z-index: -1;
+            filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="animated-name" data-shadow=" Name">Hitesh Raktade</span>
+    </div>
+</body>
+</html>
